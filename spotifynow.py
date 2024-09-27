@@ -41,7 +41,8 @@ def relink(update, context):
 def unlink(update, context):
     'remove user from db'
     sql.del_user(update.effective_user.id)
-    print(update.message.from_user.username+' just unlinked their account.')
+    username = update.message.from_user.username if update.message.from_user.username else 'Unknown User'
+    print(username + ' just unlinked their account.')
     message = "You've been unlinked from my database. You can disable the authorization from your [Account's Apps Overview](https://www.spotify.com/us/account/apps/) section."
     update.message.reply_text(message, parse_mode=ParseMode.MARKDOWN)
 
@@ -90,7 +91,7 @@ def start(update, context):
 
             message = (
                 "Yay! Your Spotify account is now linked. Tap /now anytime to flex what you're listening to. "
-                "You can also use the inline mode by typing @SpotifyNowBot in any chat."
+                "You can also use the inline mode by typing @BotTag in any chat."
             )
             update.message.reply_text(message)
 
@@ -228,9 +229,9 @@ def inlinenow(update, context):
         update.inline_query.answer([], switch_pm_text="You're not listening to anything.", switch_pm_parameter='notlistening', cache_time=0)
 
 helptext = '''
-Tap /now to share what you're listening to on Spotify. You can also use the inline mode by typing @SpotifyNowBot in any chat.\n
+Tap /now to share what you're listening to on Spotify. You can also use the inline mode by typing @BotTag in any chat.\n
 If you're new, you need to /link your account to get started. You can always /unlink it whenever you feel like.\n
-If you're facing errors, try restarting Spotify. No good? Send /cancel followed by /relink and if the issue persists, report it to @notdedsec.\n'''
+If you're facing errors, try restarting Spotify. No good? Send /cancel followed by /relink.\n'''
 
 if __name__ == "__main__": 
     if not os.path.exists('spotifynow.db'): 
