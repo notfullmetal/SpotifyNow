@@ -242,7 +242,7 @@ if __name__ == "__main__":
     authlink = f"https://accounts.spotify.com/authorize?client_id={client_id}&response_type=code&redirect_uri={linkparse(redirect_uri)}&scope=user-read-currently-playing"
 
     updater = Updater(bot_token, use_context=True)
-    os.system("title " + Bot(bot_token).first_name)
+    #os.system("title " + Bot(bot_token).first_name)
     logging.basicConfig(format='\n\n%(levelname)s\n%(asctime)s\n%(name)s\n%(message)s', level=logging.ERROR)
 
     USERNAME, AUTHTOKEN = range(2)
