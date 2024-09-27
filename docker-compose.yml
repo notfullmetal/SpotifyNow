@@ -4,4 +4,5 @@ services:
     command: python3 spotifynow.py
     restart: on-failure
     volumes:
-      - ./config.json:/app/
+      - ./config.json:/app/config.json
+      - ./spotifynow.db:/app/spotifynow.db
