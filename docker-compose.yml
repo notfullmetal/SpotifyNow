@@ -1,0 +1,7 @@
+services:
+  image_uploader:
+    image: notfullmetal/spotifynow:latest
+    command: python3 spotifynow.py
+    restart: on-failure
+    volumes:
+      - ./config.json:/
